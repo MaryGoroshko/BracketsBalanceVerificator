@@ -40,6 +40,12 @@ class BalanceVerificatorTest {
     }
 
     @Test
+    void givenEvenStringWithDifferentBrackets_sholdReturnTwo() {
+        int result = balanceVerificator.checkBrackets("{[}}");
+        Assertions.assertEquals(2, result);
+    }
+
+    @Test
     void givenNotMatchingCriteriaString_shouldReturnIllegalArgumentException() {
         Assert.assertThrows(IllegalArgumentException.class, () -> balanceVerificator.checkBrackets("s[]"));
     }
