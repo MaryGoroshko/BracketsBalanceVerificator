@@ -21,9 +21,10 @@ public class BalanceVerificator {
                             || c == '}' && !deque.isEmpty() && deque.peekFirst() == '{'
                             || c == ')' && !deque.isEmpty() && deque.peekFirst() == '(') {
                         deque.removeFirst();
+                    } else if ((string.length() % 2) != 0) {
+                        return notBalanced(deque);
                     } else {
-                        System.out.println("NOT BALANCED (" + deque.size() + ")");
-                        return deque.size();
+                        return notBalanced(deque);
                     }
                 }
             } else {
@@ -32,5 +33,10 @@ public class BalanceVerificator {
         }
         System.out.println("BALANCED");
         return -1;
+    }
+
+    private int notBalanced(Deque<Character> deque) {
+        System.out.println("NOT BALANCED (" + deque.size() + ")");
+        return deque.size();
     }
 }

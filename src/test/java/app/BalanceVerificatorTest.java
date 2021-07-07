@@ -49,4 +49,16 @@ class BalanceVerificatorTest {
     void givenNotMatchingCriteriaString_shouldReturnIllegalArgumentException() {
         Assert.assertThrows(IllegalArgumentException.class, () -> balanceVerificator.checkBrackets("s[]"));
     }
+
+    @Test
+    void givenNumberOfOpenBracketsNotEqualToTheNumberOfClosingOnes(){
+        String str = "((())";
+        int result = balanceVerificator.checkBrackets(str);
+        Assertions.assertNotEquals(str.length(), result);
+    }
+
+    @Test
+    void givenNotMatchingCriteriaString_shouldReturnIllegalException() {
+        Assert.assertThrows(IllegalArgumentException.class, () -> balanceVerificator.checkBrackets("***"));
+    }
 }
